@@ -38,9 +38,24 @@ class DOM {
     static setAttributes(el: HTMLElement, attributeObject: object): void {}
 }
 
+enum LogTypes {
+    ERROR,
+    WARN,
+    INFO
+}
+
+let args;
+
+interface Log {
+    message: string;
+    timestamp: number;
+    type: LogTypes;
+}
+
 class MobileLogger {
-    private inspectButton: HTMLElement;
-    private inspectModal: HTMLElement;
+    private inspectButtonRef: HTMLElement;
+    private inspectModalRef: HTMLElement;
+    private logs: Log[] = [];
 
     constructor() {
         this.onInit();
@@ -55,9 +70,33 @@ class MobileLogger {
 
     private setDefaults(): void {}
 
-    private setEvents(): void {}
+    private setEvents(): void {
+        window.addEventListener('error', (error) => {
+            const newLog: Log = {
+                message: error.message,
+                timestamp: new Date().getTime(),
+                type: LogTypes.ERROR
+            };
+
+            this.logs.push(newLog);
+        }, false);
+
+        const that = this;
+
+        console['defaultLog'] = console.log.bind(console);
+        console['logs'] = [];
+        console.log = function() {
+            that.catchConsole(arguments);
+
+            console['defaultLog'].apply(console, arguments);
+        };
+    }
 
     // Construct Methods
+
+    private catchConsole(args: IArguments): void {
+
+    }
 
     private renderButton(): void {}
 
