@@ -146,7 +146,7 @@ class MobileLogger {
             alignItems: 'center',
             borderRadius: '15px',
             userSelect: 'none',
-            zIndex: '99999'
+            zIndex: '1000001'
         }, document.body);
         const buttonWrapper = DOM.createElement('div', {}, {
             width: '58px',
@@ -174,7 +174,7 @@ class MobileLogger {
             backgroundColor: '#202124',
             overflow: 'auto',
             transform: 'translate3d(0,0,0)',
-            zIndex: '99998'
+            zIndex: '1000000'
         }, document.body);
 
         this.inspectModalRef = modal;
@@ -245,3 +245,4 @@ class MobileLogger {
 }
 
 const _md = new MobileLogger();
+
