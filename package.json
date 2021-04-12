@@ -1,14 +1,14 @@
 {
   "name": "mobile-logger",
   "version": "1.0.0",
-  "description": "",
+  "description": "Small plugin that helps view console logs on mobile device",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --host=0.0.0.0",
     "build": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nika Barsukovi",
   "license": "ISC",
   "devDependencies": {
     "html-webpack-plugin": "^5.3.1",
